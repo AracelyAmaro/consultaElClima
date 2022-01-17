@@ -1,13 +1,100 @@
 body{
-    background: #00B4DB;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #2980B9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: 20px;
 
+
+}
+#container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    /* background-color: rgba(49, 76, 196, 0.81); */
+    /* background-color:rgba(66, 134, 244,.4) ; */
+    width: 70%;
+    height: 600px;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+}
+#principal{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+#caja1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#caja2{
+    display: flex;
+    flex: row;
+    justify-content: center;
+}
+#animated-icon{
+    margin: 0px 196px;
+}
+#img-location{
+    height: 40px;
+    width: 40px;
+
+}
+h3,h2,h1{
+    display: flex;
+    justify-content: center;
 }
 
 #temp-description{
     text-transform: capitalize;
 }
-#caja1{
-    background-color : #6DD5FA;
+
+#actual-description{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.caja{
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px; */
+    /* box-shadow: rgba(255, 255, 255, 0.15) 0px 48px 100px 0px; */
+    /* border: 1px solid white; */
+    /* background-color: rgba(66, 134, 244,.9); */
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    justify-content: center;
+    align-content: center;
+    border-radius: 10px;
+    height: 130px;
+}
+#secondary{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+#other-days{
+    
+display:flex;
+
+}
+
+#other-day{
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 120px;
+    border-radius: 10px;
+    font-weight: bold;
+    justify-content: center;
+    background-color: rgba(66, 134, 244,.9);
+
+    margin: auto;
+} 
+#other-day > div{
+    display: flex;
+    justify-content: center;
 }

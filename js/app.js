@@ -20,6 +20,10 @@ window.addEventListener("load",() =>  {
     let day1 = document.getElementById("day-1")
     const API_KEY = 'd6ad4f9e8c44a43a79c9c40ac7baea6e'
 
+    function asignar_icono (description_temp){
+      
+    }
+
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(posicion => {
             let lon = posicion.coords.longitude
@@ -49,10 +53,10 @@ window.addEventListener("load",() =>  {
                 speedWind.textContent = `${speed} m/s`
 
                 let hum = data.current.humidity
-                humidity.textContent = `% ${hum}`
+                humidity.textContent = `${hum} %`
 
-                let presion = data.current.pressure
-                presion.textContent = presion
+                let presionAtmos = data.current.pressure
+                presion.textContent = presionAtmos
 
                 switch(data.current.weather[0].main){
                     case 'Thunderstorm':
