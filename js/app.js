@@ -1,3 +1,4 @@
+
 //cargar la API
 window.addEventListener("load",() =>  {
 
@@ -6,23 +7,58 @@ window.addEventListener("load",() =>  {
 
     let tempLocation = document.getElementById("temp-location")
     let iconAnimated = document.getElementById("animated-icon")
-
     let speedWind = document.getElementById("wind-speed")
     let humidity = document.getElementById("temp-humidity")
     let presion = document.getElementById("presion")
+    let iconDay_0 = document.getElementById("animated-icon-0")
+    let iconDay_1 = document.getElementById("animated-icon-1")
+    let iconDay_2 = document.getElementById("animated-icon-2")
+    let iconDay_3 = document.getElementById("animated-icon-3")
+    let iconDay_4 = document.getElementById("animated-icon-4")
 
+
+
+    function asignar_icono (description_temp,icon_day){
+      switch(description_temp){
+        case 'Thunderstorm':
+          icon_day.src='/animated/thunder.svg'
+          console.log('TORMENTA');
+          break;
+        case 'Drizzle':
+          icon_day.src='/animated/rainy-2.svg'
+          console.log('LLOVIZNA');
+          break;
+        case 'Rain':
+          icon_day.src='/animated/rainy-7.svg'
+          console.log('LLUVIA');
+          break;
+        case 'Snow':
+          icon_day.src='/animated/snowy-6.svg'
+            console.log('NIEVE');
+          break;                        
+        case 'Clear':
+          icon_day.src='/animated/day.svg'
+            console.log('LIMPIO');
+          break;
+        case 'Atmosphere':
+          icon_day.src='/animated/weather.svg'
+            console.log('ATMOSFERA');
+            break;  
+        case 'Clouds':
+          icon_day.src='/animated/cloudy-day-1.svg'
+            console.log('NUBES');
+            break;  
+        default:
+          icon_day.src='/animated/cloudy-day-1.svg'
+          console.log('por defecto');
+    }
+    }
 
     let day = document.getElementById("day")
-    // let tempDay = document.getElementById("temp-day")
-    // let tempNight = document.getElementById("temp-night")
-
     let day0 = document.getElementById("day-0")
     let day1 = document.getElementById("day-1")
     const API_KEY = 'd6ad4f9e8c44a43a79c9c40ac7baea6e'
-
-    function asignar_icono (description_temp){
-      
-    }
+    
 
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(posicion => {
@@ -58,42 +94,27 @@ window.addEventListener("load",() =>  {
                 let presionAtmos = data.current.pressure
                 presion.textContent = presionAtmos
 
-                switch(data.current.weather[0].main){
-                    case 'Thunderstorm':
-                      iconAnimated.src='../animated/thunder.svg'
-                      console.log('TORMENTA');
-                      break;
-                    case 'Drizzle':
-                      iconAnimated.src='../animated/rainy-2.svg'
-                      console.log('LLOVIZNA');
-                      break;
-                    case 'Rain':
-                      iconAnimated.src='../animated/rainy-7.svg'
-                      console.log('LLUVIA');
-                      break;
-                    case 'Snow':
-                      iconAnimated.src='../animated/snowy-6.svg'
-                        console.log('NIEVE');
-                      break;                        
-                    case 'Clear':
-                        iconAnimated.src='../animated/day.svg'
-                        console.log('LIMPIO');
-                      break;
-                    case 'Atmosphere':
-                      iconAnimated.src='../animated/weather.svg'
-                        console.log('ATMOSFERA');
-                        break;  
-                    case 'Clouds':
-                        iconAnimated.src='../animated/cloudy-day-1.svg'
-                        console.log('NUBES');
-                        break;  
-                    default:
-                      iconAnimated.src='../animated/cloudy-day-1.svg'
-                      console.log('por defecto');
-                }
+                let description_temp = data.current.weather[0].main
+                // console.log(description_temp)
+                asignar_icono(description_temp,iconAnimated)
+
+                let description_temp_0 = data.daily[0].weather[0].main
+                asignar_icono(description_temp_0,iconDay_0)
+
+                let description_temp_1 = data.daily[1].weather[0].main
+                asignar_icono(description_temp_0,iconDay_1)
+
+                let description_temp_2 = data.daily[2].weather[0].main
+                asignar_icono(description_temp_0,iconDay_2)
+
+                let description_temp_3 = data.daily[3].weather[0].main
+                asignar_icono(description_temp_0,iconDay_3)
+
+                let description_temp_4 = data.daily[4].weather[0].main
+                asignar_icono(description_temp_0,iconDay_4)
+
                 let dayNow = new Date().getDay()
                 
-
                 const days=["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"]
                 console.log(days[dayNow]); // domingo=0,lunes=1,martes=2,mier=3,jue=4,vie=5
 
@@ -106,22 +127,22 @@ window.addEventListener("load",() =>  {
                 document.getElementById("day-2").textContent =  days[dayNow + 2]
                 document.getElementById("day-3").textContent =  days[dayNow + 3]
                 document.getElementById("day-4").textContent =  days[dayNow + 4-7]
-                // document.getElementById("day-4").textContent =  days[dayNow + 4]
+                document.getElementById("day-4").textContent =  days[dayNow + 4]
 
-                document.getElementById("temp-day").textContent = data.daily[0].feels_like.day
-                document.getElementById("temp-night").textContent = data.daily[0].feels_like.night
+                document.getElementById("temp-day").textContent = `${Math.round(data.daily[0].temp.min)} °C`
+                document.getElementById("temp-night").textContent = `${Math.round(data.daily[0].temp.max)} °C`
 
-                document.getElementById("temp-day-1").textContent = data.daily[1].feels_like.day
-                document.getElementById("temp-night-1").textContent = data.daily[1].feels_like.night
+                document.getElementById("temp-day-1").textContent = `${Math.round(data.daily[1].temp.min)} °C`
+                document.getElementById("temp-night-1").textContent = `${Math.round(data.daily[1].temp.max)} °C`
                 
-                document.getElementById("temp-day-2").textContent = data.daily[2].feels_like.day
-                document.getElementById("temp-night-2").textContent = data.daily[2].feels_like.night
+                document.getElementById("temp-day-2").textContent = `${Math.round(data.daily[2].temp.min)} °C`
+                document.getElementById("temp-night-2").textContent = `${Math.round(data.daily[2].temp.max)} °C`
 
-                document.getElementById("temp-day-3").textContent = data.daily[3].feels_like.day
-                document.getElementById("temp-night-3").textContent = data.daily[3].feels_like.night
+                document.getElementById("temp-day-3").textContent = `${Math.round(data.daily[3].temp.min)} °C`
+                document.getElementById("temp-night-3").textContent = `${Math.round(data.daily[3].temp.max)} °C`
 
-                document.getElementById("temp-day-4").textContent = data.daily[4].feels_like.day
-                document.getElementById("temp-night-4").textContent = data.daily[4].feels_like.night
+                document.getElementById("temp-day-4").textContent = `${Math.round(data.daily[4].temp.min)} °C`
+                document.getElementById("temp-night-4").textContent = `${Math.round(data.daily[4].temp.max)} °C`
                 
                 // let day_night = data.daily[0].feels_like.night
                 // tempNight.textContent = day_night

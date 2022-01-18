@@ -4,37 +4,39 @@ body{
     background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border: 20px;
 
-
 }
-#container{
+.container{
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    /* background-color: rgba(49, 76, 196, 0.81); */
-    /* background-color:rgba(66, 134, 244,.4) ; */
+    grid-template-columns: 1fr 4fr;
+
     width: 70%;
     height: 600px;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-
+    /* overflow: hidden; */
+    
 }
-#principal{
+.container .principal{
     display:flex;
     flex-direction: column;
     justify-content: space-around;
     
 }
-#caja1{
+.caja1{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-#caja2{
+.caja2{
     display: flex;
     flex: row;
     justify-content: center;
 }
 #animated-icon{
     margin: 0px 196px;
+}
+#animated-icon-0, #animated-icon-1, #animated-icon-2, #animated-icon-3, #animated-icon-4{
+    margin: 0px 25px;
 }
 #img-location{
     height: 40px;
@@ -53,6 +55,8 @@ h3,h2,h1{
 #actual-description{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
+    margin:  1em;
+    box-sizing: border-box;
 }
 
 .caja{
@@ -61,40 +65,47 @@ h3,h2,h1{
     /* box-shadow: rgba(255, 255, 255, 0.15) 0px 48px 100px 0px; */
     /* border: 1px solid white; */
     /* background-color: rgba(66, 134, 244,.9); */
-    display: flex;
+    /* display: flex; */
+    display: inline-block;
     flex-direction: column;
     margin: 1em;
     justify-content: center;
     align-content: center;
     border-radius: 10px;
-    height: 130px;
+    /* height: 130px; */
 }
-#secondary{
+
+.secondary{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
 }
-#other-days{
-    
+
+/* #other-days{
 display:flex;
+} */
+.other-days{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin:  1em;
+    column-gap: 10px;
 
 }
 
-#other-day{
+.other-day{
     font-size: 1.3em;
     display: flex;
     flex-direction: column;
-    height: 150px;
-    width: 120px;
+    /* height: 190px;
+    width: 140px; */
     border-radius: 10px;
     font-weight: bold;
     justify-content: center;
-    background-color: rgba(66, 134, 244,.9);
-
+    background-color: #387adf;
     margin: auto;
+    box-sizing: border-box;
 } 
-#other-day > div{
+.other-day > div{
     display: flex;
     justify-content: center;
 }
