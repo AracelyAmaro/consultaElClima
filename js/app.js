@@ -15,8 +15,7 @@ window.addEventListener("load",() =>  {
     let iconDay_2 = document.getElementById("animated-icon-2")
     let iconDay_3 = document.getElementById("animated-icon-3")
     let iconDay_4 = document.getElementById("animated-icon-4")
-
-
+    let resaltable = document.getElementsByClassName("pinchable")
 
     function asignar_icono (description_temp,icon_day){
       switch(description_temp){
@@ -29,7 +28,7 @@ window.addEventListener("load",() =>  {
           console.log('LLOVIZNA');
           break;
         case 'Rain':
-          icon_day.src='/animated/rainy-7.svg'
+          icon_day.src='/animated/rainy-3.svg'
           console.log('LLUVIA');
           break;
         case 'Snow':
@@ -44,17 +43,33 @@ window.addEventListener("load",() =>  {
           icon_day.src='/animated/weather.svg'
             console.log('ATMOSFERA');
             break;  
-        case 'Clouds':
+        case 'algo de nubes':
           icon_day.src='/animated/cloudy-day-1.svg'
             console.log('NUBES');
             break;  
+        case 'nubes dispersas':
+            icon_day.src='/animated/cloudy.svg'
+              console.log('NUBES');
+              break;  
+        case 'lluvia moderada':
+          icon_day.src='/animated/rainy-5.svg'
+              console.log('NUBES');
+              break;
+        case 'lluvia de gran intensidad':
+          icon_day.src='/animated/rainy-6.svg'
+          break;
+        case 'muy nuboso':
+          icon_day.src='/animated/cloudy.svg'
+          break;  
+        case 'cielo limpio':
+          icon_day.src='/animated/day.svg'
+          break;
         default:
           icon_day.src='/animated/cloudy-day-1.svg'
           console.log('por defecto');
-    }
+      }
     }
 
-    let day = document.getElementById("day")
     let day0 = document.getElementById("day-0")
     let day1 = document.getElementById("day-1")
     const API_KEY = 'd6ad4f9e8c44a43a79c9c40ac7baea6e'
@@ -80,7 +95,6 @@ window.addEventListener("load",() =>  {
                 let description = data.current.weather[0].description
                 tempDescription.textContent = description
 
-
                 let location = data.timezone
                 tempLocation.textContent = location
                 
@@ -94,29 +108,29 @@ window.addEventListener("load",() =>  {
                 let presionAtmos = data.current.pressure
                 presion.textContent = presionAtmos
 
-                let description_temp = data.current.weather[0].main
-                // console.log(description_temp)
-                asignar_icono(description_temp,iconAnimated)
+                let icon_animated = data.current.weather[0].description
+                asignar_icono(icon_animated,iconAnimated)
 
-                let description_temp_0 = data.daily[0].weather[0].main
+                let description_temp_0 = data.daily[0].weather[0].description
                 asignar_icono(description_temp_0,iconDay_0)
 
-                let description_temp_1 = data.daily[1].weather[0].main
-                asignar_icono(description_temp_0,iconDay_1)
+                let description_temp_1 = data.daily[1].weather[0].description
+                asignar_icono(description_temp_1,iconDay_1)
 
-                let description_temp_2 = data.daily[2].weather[0].main
-                asignar_icono(description_temp_0,iconDay_2)
+                let description_temp_2 = data.daily[2].weather[0].description
+                asignar_icono(description_temp_2,iconDay_2)
 
-                let description_temp_3 = data.daily[3].weather[0].main
-                asignar_icono(description_temp_0,iconDay_3)
+                let description_temp_3 = data.daily[3].weather[0].description
+                asignar_icono(description_temp_3,iconDay_3)
 
-                let description_temp_4 = data.daily[4].weather[0].main
-                asignar_icono(description_temp_0,iconDay_4)
+                let description_temp_4 = data.daily[4].weather[0].description
+                asignar_icono(description_temp_4,iconDay_4)
+                console.log(description_temp_0)
 
                 let dayNow = new Date().getDay()
                 
-                const days=["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"]
-                console.log(days[dayNow]); // domingo=0,lunes=1,martes=2,mier=3,jue=4,vie=5
+                const days=["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo","Lunes","Martes"]
+                console.log(days[dayNow]); // domingo=0,lunes=1,martes=2,mier=3,jue=4,vie=5,sabado=6
 
                 let nameDayNow = days[dayNow]
                 day0.textContent = nameDayNow
@@ -126,7 +140,6 @@ window.addEventListener("load",() =>  {
                 // resolver problema de repeticion
                 document.getElementById("day-2").textContent =  days[dayNow + 2]
                 document.getElementById("day-3").textContent =  days[dayNow + 3]
-                document.getElementById("day-4").textContent =  days[dayNow + 4-7]
                 document.getElementById("day-4").textContent =  days[dayNow + 4]
 
                 document.getElementById("temp-day").textContent = `${Math.round(data.daily[0].temp.min)} °C`
@@ -143,13 +156,7 @@ window.addEventListener("load",() =>  {
 
                 document.getElementById("temp-day-4").textContent = `${Math.round(data.daily[4].temp.min)} °C`
                 document.getElementById("temp-night-4").textContent = `${Math.round(data.daily[4].temp.max)} °C`
-                
-                // let day_night = data.daily[0].feels_like.night
-                // tempNight.textContent = day_night
-
-                // let day_day = data.daily[1].feels_like.day
-                // tempDay.textContent = day_day
-
+              
                 
 
             })
