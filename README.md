@@ -6,7 +6,7 @@
  <br>
  ![](https://github.com/AracelyAmaro/AracelyAmaro.github.io/blob/main/img/escritorio.gif)
  <br>
- ![](https://github.com/AracelyAmaro/AracelyAmaro.github.io/blob/main/img/celular.gif)
+ ![](https://github.com/AracelyAmaro/AracelyAmaro.github.io/blob/AracelyAmaro-patch-1/img/celular.gif)
  <br>
  #### Cualquier comentario y/o sugerencia deja un issue
  
