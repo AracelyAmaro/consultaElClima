@@ -1,7 +1,8 @@
 
-//cargar la API
-window.addEventListener("load",() =>  {
 
+window.addEventListener("load",() =>  {
+    
+  // cargamos variables del DOM
     let tempValue = document.getElementById("temp-value")
     let tempDescription = document.getElementById("temp-description")
 
@@ -15,46 +16,40 @@ window.addEventListener("load",() =>  {
     let iconDay_2 = document.getElementById("animated-icon-2")
     let iconDay_3 = document.getElementById("animated-icon-3")
     let iconDay_4 = document.getElementById("animated-icon-4")
-    let resaltable = document.getElementsByClassName("pinchable")
 
     function asignar_icono (description_temp,icon_day){
       switch(description_temp){
+        case 'tormenta con lluvia ligera':
+          icon_day.src='/animated/thunder.svg'
+          break;
         case 'Thunderstorm':
           icon_day.src='/animated/thunder.svg'
           console.log('TORMENTA');
           break;
         case 'Drizzle':
           icon_day.src='/animated/rainy-2.svg'
-          console.log('LLOVIZNA');
-          break;
-        case 'Rain':
-          icon_day.src='/animated/rainy-3.svg'
-          console.log('LLUVIA');
           break;
         case 'Snow':
           icon_day.src='/animated/snowy-6.svg'
-            console.log('NIEVE');
           break;                        
         case 'Clear':
           icon_day.src='/animated/day.svg'
-            console.log('LIMPIO');
           break;
         case 'Atmosphere':
           icon_day.src='/animated/weather.svg'
-            console.log('ATMOSFERA');
-            break;  
+          break;  
         case 'algo de nubes':
           icon_day.src='/animated/cloudy-day-1.svg'
-            console.log('NUBES');
-            break;  
+          break;  
         case 'nubes dispersas':
             icon_day.src='/animated/cloudy.svg'
-              console.log('NUBES');
-              break;  
+          break;
+        case 'lluvia ligera':
+            icon_day.src='/animated/rainy-4.svg'
+            break;
         case 'lluvia moderada':
-          icon_day.src='/animated/rainy-5.svg'
-              console.log('NUBES');
-              break;
+          icon_day.src='/animated/rainy-5.svg'            
+          break;
         case 'lluvia de gran intensidad':
           icon_day.src='/animated/rainy-6.svg'
           break;
@@ -63,7 +58,7 @@ window.addEventListener("load",() =>  {
           break;  
         case 'cielo limpio':
           icon_day.src='/animated/day.svg'
-          break;
+          break;       
         default:
           icon_day.src='/animated/cloudy-day-1.svg'
           console.log('por defecto');
@@ -113,6 +108,8 @@ window.addEventListener("load",() =>  {
 
                 let description_temp_0 = data.daily[0].weather[0].description
                 asignar_icono(description_temp_0,iconDay_0)
+                console.log(description_temp_0)
+
 
                 let description_temp_1 = data.daily[1].weather[0].description
                 asignar_icono(description_temp_1,iconDay_1)
@@ -125,11 +122,10 @@ window.addEventListener("load",() =>  {
 
                 let description_temp_4 = data.daily[4].weather[0].description
                 asignar_icono(description_temp_4,iconDay_4)
-                console.log(description_temp_0)
 
                 let dayNow = new Date().getDay()
                 
-                const days=["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo","Lunes","Martes"]
+                const days=["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo","Lunes","Martes","Miercoles","Jueves"]
                 console.log(days[dayNow]); // domingo=0,lunes=1,martes=2,mier=3,jue=4,vie=5,sabado=6
 
                 let nameDayNow = days[dayNow]

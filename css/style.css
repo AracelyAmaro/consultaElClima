@@ -14,6 +14,7 @@ body{
     background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border: 20px;
+    max-width: 100%;
 }
 
 .container{
@@ -21,12 +22,11 @@ body{
     margin: 5em auto;
     padding: 1.5em;
     display: grid;
-    /* grid-template-columns: 1fr 3fr; */
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    /* grid-template-areas: ppal sc sc; */
     grid-template-columns: repeat(2,1fr);
 
 }
+
 .container > * {
     padding: 1em;
 }
@@ -35,11 +35,8 @@ body{
     display:flex;
     flex-direction: column;
     justify-content: space-around;
-    /* grid-area: ppal; */
 }
-.container .secondary{
-    /* grid-area: sec; */
-}
+
 .caja1{
     display: flex;
     flex-direction: column;
@@ -61,10 +58,14 @@ body{
 h3,h2,h1{
     display: flex;
     justify-content: center;
+    text-align: center;
 }
+
 
 #temp-description{
     text-transform: capitalize;
+    text-align: center;
+
 }
 
 #actual-description{
@@ -82,23 +83,11 @@ h3,h2,h1{
     flex-direction: column;
     padding: 2em;
     align-content: center;
+    justify-content: center;
     border-radius: 10px;
     justify-content: space-around;
 }
-/*
-.caja{
-    display: flex;
-    
-    justify-content: space-around;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-    
-}
-.secondary{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-*/
+
 .other-days{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -123,6 +112,8 @@ h3,h2,h1{
     display: flex;
     justify-content: center;
 }  
+
+/* responsive */
 @media screen and (max-width:1110px){ 
     .container{
         grid-template-columns: repeat(1,1fr);
@@ -152,5 +143,11 @@ h3,h2,h1{
 @media screen and (max-width:480px){
     .other-day{
         padding: 1em 1em;
+    }
+    .caja2{
+        padding: 4em 0em 0em 0em;
+    }
+    .container{
+        margin: 0;
     }
 } 
